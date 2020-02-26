@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!--- Basic Page Needs
+   ================================================== -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
+
+  <title>Albert Sigman Projects</title>
+
+  <!-- Mobile Specific Metas
+   ================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- CSS
+    ================================================== -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+
+
+  <link rel="shortcut icon" href="favicon.png">
+</head>
+<body>
+  <nav class="navbar">
+
+    <ul>
+      <li>Home</li>
+      <li>All Categories</li>
+      <li>All Clients</li>
+      <li>All Hashtags</li>
+    </ul>
+  </nav>
+  <header>
+Header
+  </header>
+    <main>
+
+<section class="filter-section">
+<nav class="blog-filter" >
+  <ul>
+    <li th:each="category:${categories}"
+    th:text="${category.title}">nav item 1</li>
+    <li>nav item 2</li>
+    <li>nav item 3</li>
+    <li>nav item 4</li>
+  </ul>
+</nav>
+</section>
+<section class="blog-section">
+  <div>
+    <h2>All Projects</h2>
+  </div>
+
+  <article class="blog-index">
+    <a href="blog-detail.html">
+    <div class="hover-info">
+
+    <div class="blog-title">
+      title
+    </div>
+    <div class="blog-author">
+      author
+    </div>
+    <div class="blog-snippet">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div>
+      <div class="blog-categories">
+        <h6>category</h6>
+        </div>
+    </div>
+    </a>
+  </article>
+
+  <article class="blog-index">
+    <a href="blog-detail.html">
+    <div class="hover-info">
+
+    <div class="blog-title">
+      Add A Post
+    </div>
+    <div class="blog-author">
+
+    </div>
+    <div class="blog-snippet">
+Click here to add a post
+      </div>
+      <div class="blog-categories">
+
+        </div>
+    </div>
+    </a>
+  </article>
+
+
+
+
+</section>
+
+
+    </main>
+<footer>
+  footer
+</footer>
+
+</body>
+</html>
