@@ -1,0 +1,42 @@
+
+
+.add-post{
+  margin-top: 50px;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 80px 80px 80px 500px 80px;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+
+}
+.post-label{
+  grid-column: 2;
+  grid-row: 3;
+
+  font-size: 4em;
+  line-height: 0em;
+}
+
+
+.post-input{
+  grid-column: 1;
+  grid-row-start: auto;
+  font-size: 2em;
+}
+.text-area{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  height: 500px;
+  font-size: 1.5em;
+}
+
+.btn{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  font-size: 3em;
+  background-color: #ff6068;
+  color: white;
+}

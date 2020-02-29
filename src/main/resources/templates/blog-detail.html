@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-<!--<![endif]-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
   <!--- Basic Page Needs
    ================================================== -->
@@ -13,8 +13,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <!-- CSS
     ================================================== -->
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
 
 
   <link rel="shortcut icon" href="favicon.png">
@@ -44,30 +44,26 @@
 
 <div class="blog-column-2">
 <div class="blog-detail-title">
-   <h1> Blog Title </h1>
+   <h1 th:text="${postTitle}"> </h1>
  </div>
-<div class="blog-detail-category">
-Category
+<div th:text="${postContent.categoryTitle}" class="blog-detail-category">
+
 </div>
 <div class="blog-detail-client">
-<block>
-  Client 1
-</block>
 
-<block>
-  Client 2
-</block>
+    <block  th:each="clients : ${postContent.getClients()}"
+            th:text="${clients.getClientName()} + '  '"> </block>
 
 </div>
-<div class="blog-detail-author">
+<div th:text="${postContent.author}" class="blog-detail-author">
 Author
 </div>
 
-<div class="blog-detail-date">
+<div th:text="${postContent.date}" class="blog-detail-date">
 Date
 </div>
 
-<div class="blog-detail-content">
+<div th:text="${postContent.content}" class="blog-detail-content">
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -76,13 +72,12 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
    deserunt mollit anim id est laborum.
 </div>
 <div class="blog-hashtags">
-  <tag> tag1 </tag>
-  <tag> tag1 </tag>
-  <tag> tag1 </tag>
-  <tag> tag1 </tag>
-  <tag> tag1 </tag>
+  <tag th:each="tag : ${postContent.getHashTagsForPost()}"
+       th:text ="${tag.getTag()}">  </tag>
+  <tag> Add Tag </tag>
+
 </div>
-<a class="link" href="index.html">Back</a>
+<a class="link" href="/">Back Home</a>
 
 
 

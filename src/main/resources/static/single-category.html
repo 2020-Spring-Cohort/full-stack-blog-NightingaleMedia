@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="en">
+<!--<![endif]-->
 <head>
   <!--- Basic Page Needs
    ================================================== -->
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="ie=edge" http-equiv="X-UA-Compatible">
-
   <title>Albert Sigman Projects</title>
-
+  <meta name="description" content="">
+  <meta name="author" content="">
   <!-- Mobile Specific Metas
    ================================================== -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -37,17 +35,12 @@ Header
     <main>
 
 <section class="filter-section">
-<nav class="blog-filter" >
+<nav class="blog-filter">
   <ul>
-    <a      th:each="category:${categories}"
-            th:href="@{'/' + ${category.categoryTitle}}">
-    <li
-    th:text="${category.getCategoryTitle()}">
-
-
-
-    </li>
-    </a>
+    <li>nav item 1</li>
+    <li>nav item 2</li>
+    <li>nav item 3</li>
+    <li>nav item 4</li>
   </ul>
 </nav>
 </section>
@@ -56,18 +49,15 @@ Header
     <h2>All Projects</h2>
   </div>
 
-  <article th:each="post : ${allPosts}"  class="blog-index">
-    <a  th:href="@{'/' + ${post.getCategoryTitle()} + '/' + ${post.getPostTitle()}}">
+  <article class="blog-index">
+    <a href="blog-detail.html">
     <div class="hover-info">
 
-    <div th:text="${post.getPostTitle()}" class="blog-title">
+    <div class="blog-title">
+      title
     </div>
-    <div class="blog-author" >
-        <block  th:each="cli : ${post.getClients()}"  th:text="${cli.getClientName()} + '  '" >
-
-        </block>
-
-
+    <div class="blog-author">
+      author
     </div>
     <div class="blog-snippet">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

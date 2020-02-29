@@ -6,5 +6,9 @@ import java.util.Collection;
 
 public interface CategoryStorage {
 
-    Collection<Category> findAllCategories();
+    Category findCategoryByCategoryTitle(String categoryTitle);
+
+    Collection<Category> findAll();
+
+    void store(Category c1);
 }
