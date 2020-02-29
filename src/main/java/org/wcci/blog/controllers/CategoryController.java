@@ -26,7 +26,9 @@ public class CategoryController {
     @GetMapping("/{categoryTitle}")
     public String displaySingleCategory(@PathVariable String categoryTitle, Model model){
         Category retrievedCategory = catStorage.findCategoryByCategoryTitle(categoryTitle);
+        Iterable<Post> postList = postStorage.findAllByCategory(retrievedCategory);
         model.addAttribute("singleCategory", retrievedCategory);
+        model.addAttribute("posts", postList);
         return "single-category";
     }
 

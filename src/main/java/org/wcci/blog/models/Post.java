@@ -11,10 +11,12 @@ public class Post {
 
     public Post(String postTitle,
                 Category postCategory,
+
                 Client...clients) {
         this.postTitle = postTitle;
         this.postCategory = postCategory;
         this.clients = new ArrayList<>(Arrays.asList(clients));
+        this.content = content;
         this.postTags = new HashSet<>();
     }
 
@@ -54,7 +56,9 @@ public class Post {
     public Category getPostCategory() {
         return postCategory;
     }
+
     public String getCategoryTitle(){
+
         return postCategory.getCategoryTitle();
 
     }
@@ -69,6 +73,29 @@ public class Post {
 
     public Set<HashTag> getHashTagsForPost(){
         return postTags;
+    }
+
+    public void setClients(Client client) {
+        if (!clients.contains(client)) {
+            clients.add(client);
+        } else {
+        }
+    }
+
+    public void setPostCategory(Category postCategory) {
+        this.postCategory = postCategory;
+    }
+
+    public void setPostTitle(String postTitle) {
+        this.postTitle = postTitle;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     @Override

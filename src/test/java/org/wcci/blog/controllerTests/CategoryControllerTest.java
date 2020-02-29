@@ -1,4 +1,4 @@
-package org.wcci.blog;
+package org.wcci.blog.controllerTests;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -40,12 +40,12 @@ public class CategoryControllerTest {
     }
 
     @Test
-    public void shouldReturnViewWithOneCampus() {
-        Category testCampus = new Category("Tester");
-        when(cat.findCategoryByCategoryTitle("Tester")).thenReturn(testCampus);
+    public void shouldReturnViewWithOneCategory() {
+        Category testCat1 = new Category("Tester");
+        when(cat.findCategoryByCategoryTitle("Tester")).thenReturn(testCat1);
         underTest.displaySingleCategory("Tester", mockModel);
         verify(cat).findCategoryByCategoryTitle("Tester");
-        verify(mockModel).addAttribute("singleCategory", testCampus);
+        verify(mockModel).addAttribute("singleCategory", testCat1);
     }
 
     @Test

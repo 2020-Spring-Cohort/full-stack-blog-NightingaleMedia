@@ -30,7 +30,7 @@
     </ul>
   </nav>
   <header>
-    <h1 th:text="${singleCategory.getCategoryTitle()} + ' Projects'"></h1>
+    <h1 th:text="${singleCategory.categoryTitle} + ' Projects'"></h1>
   </header>
     <main>
 
@@ -44,35 +44,38 @@
   </ul>
 </nav>
 </section>
-<section class="blog-section">
+<section class="blog-section" >
 
   <a href="/" class="first-box">
-    <h2>All Projects</h2>
+      <h2 th:text="${singleCategory.categoryTitle} + ' Projects'"></h2>
   </a>
 
 
-  <article class="blog-index">
+  <article th:each="projects : ${posts}" class="blog-index">
     <a href="blog-detail.html">
     <div class="hover-info">
 
-    <div class="blog-title">
+    <div th:text="${projects.postTitle}" class="blog-title">
       title
     </div>
-    <div class="blog-author">
-      author
+    <div  class="blog-author">
+      <block th:each="clients : ${projects.getClients()}"
+      th:text="${clients.getClientName()} + '  ' " >
+      </block>
+
     </div>
-    <div class="blog-snippet">
+    <div th:text="${projects.getContent()}" class="blog-snippet">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       </div>
       <div class="blog-categories">
-        <h6>category</h6>
+        <h6 th:text="${projects.getCategoryTitle()}">category</h6>
         </div>
     </div>
     </a>
   </article>
 
   <article class="blog-index">
-    <a href="blog-detail.html">
+    <a href="/add-post">
     <div class="hover-info">
 
     <div class="blog-title">
@@ -90,6 +93,11 @@ Click here to add a post
     </div>
     </a>
   </article>
+
+  <a href="/" class="first-box">
+    <h2>Back To All</h2>
+  </a>
+
 
 
 

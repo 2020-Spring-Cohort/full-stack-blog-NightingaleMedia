@@ -73,14 +73,14 @@ Header
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       </div>
       <div class="blog-categories">
-        <h6>category</h6>
+        <h6 th:text="${post.categoryTitle}">category</h6>
         </div>
     </div>
     </a>
   </article>
 
   <article class="blog-index">
-    <a href="blog-detail.html">
+    <a href="/add-post">
     <div class="hover-info">
 
     <div class="blog-title">

@@ -6,6 +6,9 @@ import org.wcci.blog.models.Post;
 import org.wcci.blog.storage.ClientStorage;
 import org.wcci.blog.storage.repos.ClientRepository;
 
+import java.util.Collection;
+import java.util.Optional;
+
 @Service
 public class ClientService implements ClientStorage {
 
@@ -13,6 +16,16 @@ public class ClientService implements ClientStorage {
 
     public ClientService(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
+    }
+
+    @Override
+    public Optional <Client> findByClientName(String s) {
+        return clientRepository.findByClientName(s);
+    }
+
+    @Override
+    public boolean existsByClientName(String s) {
+        return clientRepository.existsByClientName(s);
     }
 
     @Override

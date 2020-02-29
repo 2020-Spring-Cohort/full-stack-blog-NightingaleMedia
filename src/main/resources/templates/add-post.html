@@ -35,25 +35,28 @@
     <main>
 
 
-<form class="add-post">
+<form class="add-post" method="post" th:action="@{/add-post}" th:object="${post}">
 
 <h1 class="post-label"> Create New Post </h1>
 
-  <input name="post-title" type=text class="post-input" placeholder="Post Title">
+  <input th:field="*{postTitle}" type="text" class="post-input" placeholder="Post Title">
 
-  <select id="categories" name="category-name" class="post-input">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3" selected>3</option>
-    <option value="4">4</option>
-    <option value="New Category">New Category</option>
+  <select id="categories" name="catTitle" class="post-input">
+    <option th:each="category : ${categories}"
+            th:text="${category.categoryTitle}"
+            th:value="${category.getCategoryTitle()}"
+    ></option>
+
+    <option value="New Category">New </option>
   </select>
 
 
-<input type=text class="post-input" placeholder="Client">
-<textarea class="post-input text-area" placeholder="type the content here">
+<input name="client" type="text" class="post-input" placeholder="Client">
+
+
+<textarea th:field="*{content}" class="post-input text-area" placeholder="type the content here">
 </textarea>
-<button class="btn post-input" type="submit">Submit </button>
+<button class="btn post-input" type="submit" value="Submit">Submit </button>
 </form>
 
 

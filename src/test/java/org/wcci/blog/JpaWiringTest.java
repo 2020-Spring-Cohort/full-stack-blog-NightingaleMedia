@@ -42,6 +42,7 @@ public class JpaWiringTest {
     private Category testCat1;
     private HashTag testHas1;
     private Post testPost1;
+    private Post testPost2;
     private Client client1;
     private Client client2;
 
@@ -50,6 +51,7 @@ public class JpaWiringTest {
     void setUp() {
         testCat1 = new Category("Music");
         testPost1 = new Post("Best Project", testCat1, client1);
+        testPost2 = new Post ("second best project", testCat1);
         testHas1 = new HashTag("tag1");
 
         client2 = new Client("Tesla");
@@ -91,4 +93,15 @@ public class JpaWiringTest {
         testPost1.addHashTag(testHas1);
         assertThat(testPost1.getHashTagsForPost().contains(testHas1));
     }
+
+    @Test
+    public void clientCanHaveManyPosts(){
+        testPost1.addClient(client1);
+        testPost2.addClient(client1);
+
+        assertThat(testPost1.getClients().contains(client1));
+        assertThat(testPost2.getClients().contains(client2));
+
+    }
+
 }
