@@ -30,7 +30,7 @@
   </ul>
 </nav>
   <header class="blog-detail-header">
-    <h1 th:text="${singleCategory.categoryTitle} + ' Projects'"></h1>
+    <h1 th:text="${singleCategory.getCategoryTitle()} + ' Projects'"></h1>
   </header>
     <main>
 
@@ -42,7 +42,7 @@
 <section class="blog-section" >
 
   <a href="/" class="first-box">
-      <h2 th:text="${singleCategory.categoryTitle} + ' Projects'"></h2>
+      <h2 th:text="${singleCategory.getCategoryTitle()} + ' Projects'"></h2>
   </a>
 
 
@@ -50,7 +50,7 @@
     <a th:href="@{'/' + ${projects.getCategoryTitle()} + '/' + ${projects.getPostTitle()}}">
     <div class="hover-info">
 
-    <div th:text="${projects.postTitle}" class="blog-title">
+    <div th:text="${projects.getPostTitle()}" class="blog-title">
       title
     </div>
     <div  class="blog-author">

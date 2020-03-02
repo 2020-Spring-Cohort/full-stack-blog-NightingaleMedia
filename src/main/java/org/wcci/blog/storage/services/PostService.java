@@ -44,8 +44,8 @@ public class PostService implements PostStorage {
     }
 
     @Override
-    public Iterable <Post> findAllByCategory(Category retrievedCategory) {
-        return postRepo.findAllByPostCategory(retrievedCategory);
+    public Collection <Post> findAllByCategory(Category retrievedCategory) {
+        return (Collection <Post>)postRepo.findAllByPostCategory(retrievedCategory);
     }
 
     @Override
