@@ -2,10 +2,13 @@ package org.wcci.blog.storage.services;
 
 import org.springframework.stereotype.Service;
 import org.wcci.blog.models.Category;
+import org.wcci.blog.models.Client;
 import org.wcci.blog.models.Post;
 import org.wcci.blog.storage.PostStorage;
+import org.wcci.blog.storage.repos.ClientRepository;
 import org.wcci.blog.storage.repos.PostRepository;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,9 +16,16 @@ import java.util.Optional;
 public class PostService implements PostStorage {
     public PostRepository postRepo;
 
+
     public PostService (PostRepository postRepo){
         this.postRepo = postRepo;
+
     }
+
+//    @Override
+//    public Iterable<Post> findAllByClient(Client c) {
+//        return postRepo.findAllByClientsIn(c);
+//    }
 
     @Override
     public void store(Post p) {
@@ -34,7 +44,12 @@ public class PostService implements PostStorage {
     }
 
     @Override
-    public Post findAllByCategory(Category retrievedCategory) {
+    public Iterable <Post> findAllByCategory(Category retrievedCategory) {
         return postRepo.findAllByPostCategory(retrievedCategory);
+    }
+
+    @Override
+    public Iterable<Post> findPostsByClient(Client client) {
+        return postRepo.findAllByClients(client);
     }
 }

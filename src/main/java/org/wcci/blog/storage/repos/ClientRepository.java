@@ -15,5 +15,6 @@ public interface ClientRepository extends CrudRepository <Client, Long> {
 
     Optional<Client> findByClientName(String s);
 
+
     boolean existsByClientName(String s);
 }

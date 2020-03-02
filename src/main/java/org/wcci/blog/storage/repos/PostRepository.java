@@ -15,6 +15,8 @@ public interface PostRepository extends CrudRepository <Post, Long>{
 
 Post findByPostTitle(String t);
 
-Post findAllByPostCategory(Category c);
+Iterable <Post> findAllByPostCategory(Category c);
+
+Iterable<Post> findAllByClients(Client c);
 
 }

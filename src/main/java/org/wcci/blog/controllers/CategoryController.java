@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.wcci.blog.models.Category;
+import org.wcci.blog.models.Client;
 import org.wcci.blog.models.Post;
 import org.wcci.blog.storage.CategoryStorage;
 import org.wcci.blog.storage.PostStorage;
@@ -24,9 +25,10 @@ public class CategoryController {
     }
 
     @GetMapping("/{categoryTitle}")
-    public String displaySingleCategory(@PathVariable String categoryTitle, Model model){
+    public String displaySingleCategory(
+            @PathVariable String categoryTitle, Model model){
         Category retrievedCategory = catStorage.findCategoryByCategoryTitle(categoryTitle);
-        Post postList = postStorage.findAllByCategory(retrievedCategory);
+        Iterable <Post> postList = postStorage.findAllByCategory(retrievedCategory);
         model.addAttribute("singleCategory", retrievedCategory);
         model.addAttribute("posts", postList);
         return "single-category";
