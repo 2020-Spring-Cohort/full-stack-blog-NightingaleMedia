@@ -24,13 +24,13 @@
 
   <ul>
     <li><a href="/" class="home-button">Home</a></li>
-    <li class="selected"><a href="/categories">All Categories</a></li>
+    <li   class="selected"><a href="/categories">All Categories</a></li>
     <li><a href="/clients">All Clients</a></li>
     <li><a href="/add-post">Add Post</a></li>
   </ul>
 </nav>
   <header>
-    <h1 th:text="${singleCategory.categoryTitle} + ' Projects'"></h1>
+    <h1  >All Categories</h1>
   </header>
     <main>
 
@@ -41,47 +41,39 @@
 </section>
 <section class="blog-section" >
 
-  <a href="/" class="first-box">
-      <h2 th:text="${singleCategory.categoryTitle} + ' Projects'"></h2>
-  </a>
 
-
-  <article th:each="projects : ${posts}" class="blog-index">
-    <a href="blog-detail.html">
+  <article th:each="cat : ${categories}" class="blog-index">
+    <a th:href="@{'/' + ${cat.categoryTitle}}">
     <div class="hover-info">
 
-    <div th:text="${projects.postTitle}" class="blog-title">
+    <div th:text="${cat.categoryTitle}" class="blog-title">
       title
     </div>
     <div  class="blog-author">
-      <block th:each="clients : ${projects.getClients()}"
-      th:text="${clients.getClientName()} + '  ' " >
-      </block>
 
     </div>
-    <div th:text="${projects.getContent()}" class="blog-snippet">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    <div class="blog-snippet">
       </div>
       <div class="blog-categories">
-        <block><h6 th:text="${projects.getCategoryTitle()}"></h6>
-        </block>
+
+
         </div>
     </div>
     </a>
   </article>
 
   <article class="blog-index">
-    <a href="/add-post">
+    <a href="/add-category">
     <div class="hover-info">
 
     <div class="blog-title">
-      Add A Post
+      Add A Category
     </div>
     <div class="blog-author">
 
     </div>
     <div class="blog-snippet">
-Click here to add a post
+Click here to add a category
       </div>
       <div class="blog-categories">
 

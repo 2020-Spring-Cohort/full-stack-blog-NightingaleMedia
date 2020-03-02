@@ -10,9 +10,11 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 import org.wcci.blog.controllers.PostController;
 import org.wcci.blog.models.Category;
+import org.wcci.blog.models.HashTag;
 import org.wcci.blog.models.Post;
 import org.wcci.blog.storage.CategoryStorage;
 import org.wcci.blog.storage.ClientStorage;
+import org.wcci.blog.storage.HashTagStorage;
 import org.wcci.blog.storage.PostStorage;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,7 +25,7 @@ public class postControllerTest {
 
 
     private PostStorage postStorage;
-
+    private HashTagStorage hashStorage;
     private PostController underTest;
 
     private MockMvc mockMvc;
@@ -35,12 +37,13 @@ public class postControllerTest {
     @BeforeEach
     public void setup(){
         postStorage = mock(PostStorage.class);
-        underTest = new PostController(postStorage);
+        hashStorage = mock(HashTagStorage.class);
+        underTest = new PostController(postStorage, hashStorage);
 
         cat1 = new Category("tester");
         testPost1 = new Post("TestPost1", cat1);
         mockModel = mock(Model.class);
-        when(postStorage.findPostByTitle("TestPost1")).thenReturn(testPost1);
+        when(postStorage.findPostByTitle("TestPost1")).thenReturn((testPost1));
     }
     @Test
     public void shouldGetThePostView(){
@@ -49,12 +52,19 @@ public class postControllerTest {
     }
 
     @Test
-    public void postShouldInteractWithDependencies() throws NotAMockException {
+    public void postShouldInteractWithDependencies() {
 
         underTest.displaySinglePost("TestPost1", mockModel);
 //        verify(postStorage.findPostByTitle("TestPost1"));
         verify(mockModel).addAttribute("postContent", testPost1);
 
+
+    }
+
+    @Test public void postShouldAddHashTag(){
+        String hashToAdd = "helloWorld!";
+        underTest.addHashTag(hashToAdd, "TestPost1");
+        assertThat(testPost1.getHashTagsForPost().contains(hashStorage.findTagByName("helloWorld")));
 
     }
 }

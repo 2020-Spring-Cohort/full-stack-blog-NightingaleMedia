@@ -33,6 +33,11 @@ public class ClientService implements ClientStorage {
         clientRepository.save(c);
     }
 
+    @Override
+    public Iterable<Client> findAll() {
+        return clientRepository.findAll();
+    }
+
     public void findClientsForPost(Post p){
         clientRepository.findAllByPosts(p);
     }

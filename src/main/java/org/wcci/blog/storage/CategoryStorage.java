@@ -8,6 +8,8 @@ public interface CategoryStorage {
 
     Category findCategoryByCategoryTitle(String categoryTitle);
 
+    boolean categoryExistsByTitle(String s);
+
     Collection<Category> findAll();
 
     void store(Category c1);

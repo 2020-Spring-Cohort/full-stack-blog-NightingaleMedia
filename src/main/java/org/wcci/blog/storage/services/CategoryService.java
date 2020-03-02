@@ -24,6 +24,11 @@ public class CategoryService implements CategoryStorage {
     }
 
     @Override
+    public boolean categoryExistsByTitle(String s) {
+        return catRepo.existsByCategoryTitle(s);
+    }
+
+    @Override
     public Collection<Category> findAll() {
         return (Collection <Category> )catRepo.findAll();
     }

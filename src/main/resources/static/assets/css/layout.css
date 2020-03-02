@@ -18,8 +18,8 @@ body a{
 .navbar ul{
   list-style: none;
   display: flex;
-  flex-direction: row-reverse;
   justify-content: space-around;
+  align-items: center;
 
 }
 
@@ -46,8 +46,15 @@ header{
   list-style: none;
 }
 
+.blog-filter .first{
+  color: #181818;
+  background-color: rgba(0,0,0,0);
+  font-weight: 600;
+}
+
 .blog-filter ul li{
-  background-color: orange;
+  color: white;
+  font-weight: 400;
   padding: 5px;
 }
 
@@ -154,6 +161,47 @@ font-size: 1em;
   padding: 10px;
 
 }
+
+.blog-categories {
+  width: min-content;
+
+}
+
+.blog-categories h6 {
+  font-size: 1em;
+  padding: 5px;
+  background-color: purple;
+  color: #ffffff;
+}
+
+.music h6 {
+  background-color: orange;
+}
+.design h6 {
+  background-color: royalblue;
+}
+.tech h6 {
+  background-color: slategrey;
+}
+.writing h6 {
+  background-color: darkgreen;
+}
+
+li.music {
+  background-color: orange;
+}
+li.design {
+  background-color: royalblue;
+}
+li.tech {
+  background-color: slategrey;
+}
+li.writing {
+  background-color: darkgreen;
+}
+
+
+
 
 .blog-detail-section{
   width: 90%;

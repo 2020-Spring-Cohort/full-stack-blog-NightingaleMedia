@@ -25,24 +25,25 @@
   <nav class="navbar">
 
     <ul>
-      <li>Home</li>
-      <li>All Categories</li>
-      <li>All Clients</li>
-      <li>All Hashtags</li>
+      <li class="selected"><a href="/" class="home-button ">Home</a></li>
+      <li><a href="/categories">All Categories</a></li>
+      <li><a href="/clients">All Clients</a></li>
+      <li><a href="/add-post">Add Post</a></li>
     </ul>
   </nav>
-  <header>
-Header
+  <header class="main-header">
+    <h1> My Clients and Projects </h1>
   </header>
     <main>
 
 <section class="filter-section">
 <nav class="blog-filter" >
+
   <ul>
+    <li class="first">Categories:</li>
     <a      th:each="category:${categories}"
             th:href="@{'/' + ${category.categoryTitle}}">
-    <li
-    th:text="${category.getCategoryTitle()}">
+    <li th:text="${category.getCategoryTitle()}" th:class="${category.getCategoryTitle().toLowerCase()}">
 
 
 
@@ -69,11 +70,11 @@ Header
 
 
     </div>
-    <div class="blog-snippet">
+    <div th:text="${post.getContent()}" class="blog-snippet">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       </div>
-      <div class="blog-categories">
-        <h6 th:text="${post.categoryTitle}">category</h6>
+      <div th:class="${post.getCategoryTitle().toLowerCase()} + ' blog-categories'">
+        <h6 th:text="${post.categoryTitle}" >category</h6>
         </div>
     </div>
     </a>

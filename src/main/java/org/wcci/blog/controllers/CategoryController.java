@@ -2,9 +2,7 @@ package org.wcci.blog.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.wcci.blog.models.Category;
 import org.wcci.blog.models.Post;
 import org.wcci.blog.storage.CategoryStorage;
@@ -39,4 +37,24 @@ public class CategoryController {
          model.addAttribute("allPosts", postIterable);
         return "index";
     }
+
+    @RequestMapping("/categories")
+    public String displayAllCategories(Model model){
+        model.addAttribute("categories", catStorage.findAll());
+        return "all-categories";
+    }
+
+    @GetMapping("add-category")
+        public String addCategoryGet(){
+        return "add-category";
+        }
+
+    @PostMapping("add-category")
+    public String addCategoryPost(@RequestParam String catTitle){
+        if(!catStorage.categoryExistsByTitle(catTitle)) {
+            Category catToAdd = new Category(catTitle);
+            catStorage.store(catToAdd);
+        } return "redirect:/categories";
+    }
+
 }

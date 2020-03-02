@@ -16,8 +16,9 @@ public class Post {
         this.postTitle = postTitle;
         this.postCategory = postCategory;
         this.clients = new ArrayList<>(Arrays.asList(clients));
-        this.content = content;
+        this.content = "";
         this.postTags = new HashSet<>();
+
     }
 
     @Id
@@ -29,6 +30,10 @@ public class Post {
 
     @ManyToMany
     private Set<HashTag> postTags;
+
+    public void addHashTag(HashTag h) {
+        postTags.add(h);
+    }
 
     @ManyToOne
     private Category postCategory;
@@ -138,7 +143,7 @@ public class Post {
         this.clients.add(c);
     }
 
-    public void addHashTag(HashTag h) {
-        postTags.add(h);
+    public void setDate(int i) {
+        this.date = i;
     }
 }

@@ -24,10 +24,10 @@
 <nav class="navbar">
 
   <ul>
-    <li><a href="/" class="home-button">Home</a></li>
+    <li><a href="/" class="home-button ">Home</a></li>
     <li><a href="/categories">All Categories</a></li>
     <li><a href="/clients">All Clients</a></li>
-    <li class="selected"><a href="/add-post">Add Post</a></li>
+    <li><a href="/add-post">Add Post</a></li>
   </ul>
 </nav>
 
@@ -35,27 +35,14 @@
     <main>
 
 
-<form class="add-post" method="post" th:action="@{/add-post}" th:object="${post}">
+<form class="add-post" method="post" th:action="@{/add-category}" th:object="${post}">
 
-<h1 class="post-label"> Create New Post </h1>
+<h1 class="post-input "> Create New Category </h1>
 
-  <input th:field="*{postTitle}" type="text" class="post-input" placeholder="Post Title">
-
-  <select id="categories" name="catTitle" class="post-input">
-    <option th:each="category : ${categories}"
-            th:text="${category.categoryTitle}"
-            th:value="${category.getCategoryTitle()}"
-    ></option>
-
-    <option value="New Category">New </option>
-  </select>
+  <input name="catTitle" type="text" class="btn post-input " placeholder="Category Title">
 
 
-<input name="client" type="text" class="post-input" placeholder="Client">
 
-
-<textarea th:field="*{content}" class="post-input text-area" placeholder="type the content here">
-</textarea>
 <button class="btn post-input" type="submit" value="Submit">Submit </button>
 </form>
 

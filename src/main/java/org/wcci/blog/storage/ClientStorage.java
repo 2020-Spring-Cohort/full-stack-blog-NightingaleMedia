@@ -11,4 +11,6 @@ public interface ClientStorage {
     boolean existsByClientName(String s);
 
     void store(Client c);
+
+    Iterable <Client> findAll();
 }

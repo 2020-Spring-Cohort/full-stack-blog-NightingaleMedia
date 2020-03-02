@@ -6,8 +6,8 @@ import org.wcci.blog.models.Post;
 import org.wcci.blog.storage.PostStorage;
 import org.wcci.blog.storage.repos.PostRepository;
 
-import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PostService implements PostStorage {

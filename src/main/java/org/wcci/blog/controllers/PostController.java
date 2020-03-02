@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.wcci.blog.models.Category;
 import org.wcci.blog.models.Client;
+import org.wcci.blog.models.HashTag;
 import org.wcci.blog.models.Post;
 import org.wcci.blog.storage.CategoryStorage;
 import org.wcci.blog.storage.ClientStorage;
@@ -25,10 +26,12 @@ public class PostController {
     @Autowired
     private ClientStorage clientStorage;
 
+    private HashTagStorage hashTagStorage;
     private PostStorage postStorage;
 
-    public PostController(PostStorage postStorage) {
+    public PostController(PostStorage postStorage, HashTagStorage hashTagStorage) {
         this.postStorage = postStorage;
+        this.hashTagStorage = hashTagStorage;
     }
 
 
@@ -39,6 +42,23 @@ public class PostController {
 //        String categoryTitle = catForPost.getCategoryTitle();
         model.addAttribute("postContent", retrievedPost);
         return "blog-detail";
+    }
+
+    @PostMapping("/add-tag")
+    public String addHashTag(@RequestParam String tag, String postTitle){
+        Post postToAddHash = postStorage.findPostByTitle(postTitle);
+        String categoryTitle = postToAddHash.getCategoryTitle();
+
+        HashTag hashToAddToPost;
+        if(hashTagStorage.TagByNameExists(tag)) {
+            hashToAddToPost = hashTagStorage.findTagByName(tag);
+        } else {
+            hashToAddToPost = new HashTag(tag);
+            hashTagStorage.store(hashToAddToPost);
+        }
+        postToAddHash.addHashTag(hashToAddToPost);
+        postStorage.store(postToAddHash);
+        return "redirect:/" + categoryTitle +"/"+ postTitle;
     }
 
     @GetMapping("/add-post")

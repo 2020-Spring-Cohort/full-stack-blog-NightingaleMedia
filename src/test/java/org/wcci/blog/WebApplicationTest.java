@@ -21,6 +21,7 @@ public class WebApplicationTest {
 
     @Autowired
     private CategoryController categoryController;
+
     @Test
     public void shouldReturnIndex() throws Exception {
         mockMvc.perform(get("/"))

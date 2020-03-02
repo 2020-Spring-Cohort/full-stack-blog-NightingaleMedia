@@ -8,4 +8,6 @@ import org.wcci.blog.models.Category;
 public interface CategoryRepository extends CrudRepository<Category, Long> {
 
     Category findCategoryByCategoryTitle(String c);
+
+    boolean existsByCategoryTitle(String s);
 }

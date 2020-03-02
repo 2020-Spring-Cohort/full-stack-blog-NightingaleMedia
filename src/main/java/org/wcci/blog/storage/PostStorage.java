@@ -2,9 +2,8 @@ package org.wcci.blog.storage;
 
 import org.wcci.blog.models.Category;
 import org.wcci.blog.models.Post;
-import org.wcci.blog.storage.repos.PostRepository;
 
-import java.util.List;
+import java.util.Optional;
 
 public interface PostStorage {
 

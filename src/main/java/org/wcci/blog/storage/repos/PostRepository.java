@@ -8,6 +8,7 @@ import org.wcci.blog.models.Post;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PostRepository extends CrudRepository <Post, Long>{

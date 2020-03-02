@@ -7,5 +7,7 @@ import org.wcci.blog.models.HashTag;
 @Repository
 public interface HashTagRepository extends CrudRepository <HashTag, Long> {
 
+    HashTag findHashTagByTag(String t);
 
+    boolean existsHashTagByTag(String t);
 }

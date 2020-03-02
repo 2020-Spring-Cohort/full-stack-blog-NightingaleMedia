@@ -104,4 +104,18 @@ public class JpaWiringTest {
 
     }
 
+    @Test
+    public void PostCanHaveManyHashTags(){
+        HashTag h1 = new HashTag("testing1");
+        HashTag h2 = new HashTag("testing2");
+        hashTagRepository.save(h1);
+        hashTagRepository.save(h2);
+        testPost1.addHashTag(h1);
+        testPost1.addHashTag(h2);
+        postRepository.save(testPost1);
+
+        assertThat(testPost1.getHashTagsForPost()).contains(h1, h2);
+
+    }
+
 }
