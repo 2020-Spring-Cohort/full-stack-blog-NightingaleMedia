@@ -41,7 +41,7 @@ public class postControllerTest {
         underTest = new PostController(postStorage, hashStorage);
 
         cat1 = new Category("tester");
-        testPost1 = new Post("TestPost1", cat1);
+        testPost1 = new Post("TestPost1", cat1, "");
         mockModel = mock(Model.class);
         when(postStorage.findPostByTitle("TestPost1")).thenReturn((testPost1));
     }

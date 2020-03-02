@@ -1,6 +1,8 @@
 package org.wcci.blog.storage.services;
 
+import org.hibernate.Session;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.wcci.blog.models.Category;
 import org.wcci.blog.models.Post;
 import org.wcci.blog.storage.PostStorage;
@@ -16,9 +18,6 @@ public class PostService implements PostStorage {
     public PostService (PostRepository postRepo){
         this.postRepo = postRepo;
     }
-
-
-
 
     @Override
     public void store(Post p) {

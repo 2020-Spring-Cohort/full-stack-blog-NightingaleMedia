@@ -11,12 +11,12 @@ public class Post {
 
     public Post(String postTitle,
                 Category postCategory,
-
+                String content,
                 Client...clients) {
         this.postTitle = postTitle;
         this.postCategory = postCategory;
         this.clients = new ArrayList<>(Arrays.asList(clients));
-        this.content = "";
+        this.content = content;
         this.postTags = new HashSet<>();
 
     }

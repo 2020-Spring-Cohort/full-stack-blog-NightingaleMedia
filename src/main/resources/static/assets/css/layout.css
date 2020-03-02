@@ -44,6 +44,7 @@ header{
   display: flex;
   justify-content: space-between;
   list-style: none;
+
 }
 
 .blog-filter .first{
@@ -56,6 +57,7 @@ header{
   color: white;
   font-weight: 400;
   padding: 5px;
+  background-color: #0f1924;
 }
 
 .blog-section {
@@ -188,16 +190,16 @@ font-size: 1em;
 }
 
 li.music {
-  background-color: orange;
+  background-color: orange !important;
 }
 li.design {
-  background-color: royalblue;
+  background-color: royalblue !important;
 }
 li.tech {
-  background-color: slategrey;
+  background-color: slategrey !important;
 }
 li.writing {
-  background-color: darkgreen;
+  background-color: darkgreen !important;
 }
 
 

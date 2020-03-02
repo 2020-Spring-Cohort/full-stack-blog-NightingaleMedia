@@ -13,12 +13,15 @@ import org.wcci.blog.storage.ClientStorage;
 import org.wcci.blog.storage.HashTagStorage;
 import org.wcci.blog.storage.PostStorage;
 
+import javax.persistence.EntityManager;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class PostController {
+
+    private EntityManager entity;
 
     @Autowired
     private CategoryStorage categoryStorage;
@@ -56,6 +59,7 @@ public class PostController {
             hashToAddToPost = new HashTag(tag);
             hashTagStorage.store(hashToAddToPost);
         }
+
         postToAddHash.addHashTag(hashToAddToPost);
         postStorage.store(postToAddHash);
         return "redirect:/" + categoryTitle +"/"+ postTitle;
@@ -80,11 +84,12 @@ public class PostController {
                 clientToStore = new Client(client);
                 clientStorage.store(clientToStore);
             }
-            postToStore = new Post(post.getPostTitle(), category, clientToStore);
+            postToStore = new Post(post.getPostTitle(), category, post.getContent(), clientToStore);
         } else {
-            postToStore = new Post(post.getPostTitle(), category);
+            postToStore = new Post(post.getPostTitle(), category, post.getContent(),null);
         }
         postStorage.store(postToStore);
+
         return "redirect:/";
     }
 

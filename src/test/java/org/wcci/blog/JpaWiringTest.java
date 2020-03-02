@@ -50,8 +50,8 @@ public class JpaWiringTest {
     @BeforeEach
     void setUp() {
         testCat1 = new Category("Music");
-        testPost1 = new Post("Best Project", testCat1, client1);
-        testPost2 = new Post ("second best project", testCat1);
+        testPost1 = new Post("Best Project", testCat1, "test content", client1);
+        testPost2 = new Post ("second best project", testCat1, "content", client1);
         testHas1 = new HashTag("tag1");
 
         client2 = new Client("Tesla");

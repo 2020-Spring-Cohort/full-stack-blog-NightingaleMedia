@@ -29,7 +29,7 @@
     <li><a href="/add-post">Add Post</a></li>
   </ul>
 </nav>
-  <header>
+  <header class="blog-detail-header">
     <h1 th:text="${singleCategory.categoryTitle} + ' Projects'"></h1>
   </header>
     <main>
@@ -47,7 +47,7 @@
 
 
   <article th:each="projects : ${posts}" class="blog-index">
-    <a href="blog-detail.html">
+    <a th:href="@{'/' + ${projects.getCategoryTitle()} + '/' + ${projects.getPostTitle()}}">
     <div class="hover-info">
 
     <div th:text="${projects.postTitle}" class="blog-title">

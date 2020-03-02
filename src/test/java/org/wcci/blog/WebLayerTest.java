@@ -10,6 +10,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.wcci.blog.controllers.CategoryController;
+import org.wcci.blog.models.Post;
 import org.wcci.blog.storage.CategoryStorage;
 import org.wcci.blog.storage.ClientStorage;
 import org.wcci.blog.storage.HashTagStorage;
@@ -19,6 +20,7 @@ import org.wcci.blog.storage.repos.ClientRepository;
 import org.wcci.blog.storage.repos.HashTagRepository;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -27,22 +29,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest
 public class WebLayerTest {
 
-    @MockBean
-    private CategoryStorage categoryStorage;
-
-    @MockBean
-    private HashTagStorage hashStorage;
-
-    @MockBean
-    private ClientStorage clientStorage;
-
-    @MockBean
-    private PostStorage postStorage;
-
     @Autowired
     private MockMvc mockMvc;
 
-    @Autowired
+    @MockBean
+    CategoryStorage categoryStorage;
+
+    @MockBean
+    ClientStorage clientStorage;
+
+    @MockBean
+    PostStorage postStorage;
+
+    @MockBean
     CategoryController catController;
 
     @Test

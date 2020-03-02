@@ -26,7 +26,7 @@ public class CategoryControllerTest {
 
     private CategoryController underTest;
     private CategoryStorage cat;
-    private PostStorage post;
+    private PostStorage postStorage;
 
     private MockMvc mockMvc;
     private Model mockModel;
@@ -35,7 +35,8 @@ public class CategoryControllerTest {
     public void setup(){
         mockModel = mock(Model.class);
         cat =  mock(CategoryStorage.class);
-        underTest = new CategoryController(cat, post);
+        postStorage = mock(PostStorage.class);
+        underTest = new CategoryController(cat, postStorage);
         mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
     }
 

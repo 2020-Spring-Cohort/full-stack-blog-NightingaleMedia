@@ -31,7 +31,7 @@
     </ul>
 </nav>
   <header class="blog-detail-header">
-
+    <h1 th:text="${postTitle}"></h1>
   </header>
 
 <main>
@@ -47,9 +47,12 @@
 <div class="blog-detail-title">
    <h1 th:text="${postTitle}"> </h1>
  </div>
-<div th:text="${postContent.categoryTitle}" class="blog-detail-category">
 
+<div class="blog-detail-category" >
+    <a th:href="@{'/' + ${postContent.categoryTitle}}"
+       th:text="${postContent.categoryTitle}">    </a>
 </div>
+
 <div class="blog-detail-client">
 
     <block  th:each="clients : ${postContent.getClients()}"

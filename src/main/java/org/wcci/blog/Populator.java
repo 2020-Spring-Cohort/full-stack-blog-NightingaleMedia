@@ -49,20 +49,32 @@ public class Populator implements CommandLineRunner {
         Client cl1 = new Client("WeCanCode IT");
         clientStorage.store(cl1);
 
-        Post p1 = new Post("About This Blog", c2, cl1);
+        Client cl2 = new Client("BlackMath");
+        clientStorage.store(cl2);
+
+        Client cl3 = new Client("Oranjudio Columbus");
+        clientStorage.store(cl3);
+
+        Client cl4 = new Client("Nightingale Media");
+        clientStorage.store(cl4);
+
+        Post p1 = new Post("About This Blog", c2, "", cl1);
         p1.setContent("This blog is a content management system created by Al Sigman " +
                 "and made to keep track of all of my various freelance projects.  " +
                 "Projects are organized by category and are sub-typed using clients.");
         p1.setDate(2020);
 
-
-
-
-
-
-
+        Post p2 = new Post("Working Towards Something",c1, "I love to make music" +
+                "projects and I love taking time to learn new instruments and songs.", cl2, cl1);
+        Post p3 = new Post("A Designer's Delight", c3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",cl2,cl3);
+        Post p4 = new Post("Raspberry Pi", c2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",cl4);
+        Post p5 = new Post("Writing Away", c4, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", cl3, cl1);
 
         postStorage.store(p1);
+        postStorage.store(p2);
+        postStorage.store(p3);
+        postStorage.store(p4);
+        postStorage.store(p5);
 
     }
 
