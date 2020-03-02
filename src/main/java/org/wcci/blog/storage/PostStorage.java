@@ -15,5 +15,5 @@ public interface PostStorage {
 
     Post findPostByTitle (String s);
 
-    Iterable<Post> findAllByCategory(Category retrievedCategory);
+    Post findAllByCategory(Category retrievedCategory);
 }

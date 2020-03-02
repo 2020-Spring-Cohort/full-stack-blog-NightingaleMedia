@@ -9,6 +9,8 @@ import org.wcci.blog.storage.CategoryStorage;
 import org.wcci.blog.storage.PostStorage;
 import org.wcci.blog.storage.repos.CategoryRepository;
 
+import java.util.Optional;
+
 @Controller
 public class CategoryController {
 
@@ -24,7 +26,7 @@ public class CategoryController {
     @GetMapping("/{categoryTitle}")
     public String displaySingleCategory(@PathVariable String categoryTitle, Model model){
         Category retrievedCategory = catStorage.findCategoryByCategoryTitle(categoryTitle);
-        Iterable<Post> postList = postStorage.findAllByCategory(retrievedCategory);
+        Post postList = postStorage.findAllByCategory(retrievedCategory);
         model.addAttribute("singleCategory", retrievedCategory);
         model.addAttribute("posts", postList);
         return "single-category";
